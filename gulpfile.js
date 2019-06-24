@@ -196,11 +196,11 @@ var buildStyles = function (done) {
 	// Run tasks on all Sass files
 	return src(paths.styles.input)
 		.pipe(sass({
+      includePaths: require('node-normalize-scss').includePaths,
 			outputStyle: 'expanded',
 			sourceComments: true
 		}))
 		.pipe(prefix({
-			//browsers: ['last 2 version', '> 0.25%'],
 			cascade: true,
 			remove: true
 		}))
