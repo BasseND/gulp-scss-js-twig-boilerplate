@@ -7,12 +7,13 @@ A boilerplate for building web projects with [Gulp](https://gulpjs.com/). Uses G
 - Concatenate, minify, and lint JavaScript.
 - Compile, minify, autoprefix, and lint Sass.
 - Optimize SVGs.
-- Copy static files and folders into your `dist` directory.
+- Render twig templates with JSON data
+- Copy static assets files and folders into your `dist` directory.
 - Automatically add headers and project details to JS and CSS files.
 - Create polyfilled and non-polyfilled versions of JS files.
 - Watch for file changes, and automatically recompile build and reload webpages.
 
-**Gulp Boilerplate makes it easy to turn features on and off**, so you can reuse it for all of your projects without having to delete or modify tasks.
+**Turn features on and off**, so you can reuse it for all of your projects without having to delete or modify tasks.
 
 
 
@@ -45,8 +46,8 @@ Add your source files to the appropriate `src` subdirectories. Gulp will process
 
 - JavaScript files in the `src/js` directory will be compiled to `dist/js`. Files in subdirectories under the `js` folder will be concatenated. For example, files in `js/detects` will compile into `detects.js`.
 - Files in the `src/sass` directory will be compiled to `dist/css`.
-- SVG files placed in the `src/svg` directory will be optimized with SVGO and compiled into `dist/svg`.
-- Files and folders placed in the `copy` directory will be copied as-is into the `dist` directory.
+- SVG files placed in the `src/assets/svg/` directory will be optimized with SVGO and compiled into `dist/assets/svg/`.
+- Other files and folders (except `assets/svg`) placed in the `assets` directory will be copied as-is into the `dist/assets` directory.
 
 ### package.json
 
@@ -91,13 +92,13 @@ Gulp generates minified and unminified CSS files. It also includes [autoprefixer
 
 ### SVGs
 
-Place SVG files in the `src/svg` directory.
+Place SVG files in the `src/assets/svg/` directory.
 
-SVG files will be optimized with [SVGO](https://github.com/svg/svgo) and compiled into `dist/svg`.
+SVG files will be optimized with [SVGO](https://github.com/svg/svgo) and compiled into `dist/assets/svg/`.
 
 ### Copy Files
 
-Files and folders placed in the `src/copy` directory will be copied as-is into `dist`.
+Files and folders placed in the `src/assets` directory will be copied as-is into `dist`.
 
 This is a great place to put HTML files, images, and pre-compiled assets.
 
