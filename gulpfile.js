@@ -250,6 +250,7 @@ var startServer = function (done) {
 
 	// Initialize BrowserSync
 	browserSync.init({
+    browser: "google chrome",
 		server: {
 			baseDir: paths.reload
 		}
