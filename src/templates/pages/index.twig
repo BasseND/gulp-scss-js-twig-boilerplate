@@ -1,0 +1,14 @@
+{% extends '../layouts/main.twig' %}
+
+{% block main %}
+
+  <p><button id="click-me">Click Me</button></p>
+  
+  {% include '../../components/list/list.twig' %}
+
+{% endblock %}
+
+
+{% block page_title %}Demo page{% endblock %}
+
+{% block body_class %}demo-page{% endblock %}

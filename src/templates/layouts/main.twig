@@ -1,42 +1,23 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>{% block page_title %}{% endblock %}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
-        <meta name="theme-color" content="#009B41">
-        <link rel="stylesheet" href="css/styles.css">
-        <link rel="shortcut icon" href="https://www.gfforsikring.dk/favicon.ico" type="image/vnd.microsoft.icon">
-        <script src="js/lib/modernizr.min.js"></script>
-    </head>
-    <body class="{% block body_class %}{% endblock %}">
-        
-        
+<head>
+  <meta charset="utf-8" />
+	<title>{% block page_title %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  
+  {% include '../components/header.twig' %}
+  
+  <main>
+    {% block main %}{% endblock %}
+  </main>
+  
+  {% include '../components/footer.twig' %}
 
-        <div class="layout">
-        
-            <main>
-                {% block main %}{% endblock %}
-            </main>
-            
-        </div>
-
-
-
-        <div class="page-overlay"></div>
-
-        
-
-        <script src="js/lib/jquery.min.js"></script>
-
-        <!-- Includes all the theme functions -->
-        <script src="js/script.min.js"></script>
-        
-        <script src="js/lib/picker.js"></script>
-        <script src="js/lib/picker.date.js"></script>
-        <!-- REPLACE prototype/xx.js with own implementation in production -->
-        <script src="js/prototype/mixed.js"></script>
-        <script src="js/prototype/claims-report.js"></script>
-
-    </body>
+	<script src="js/detects.js"></script>
+	<script src="js/another-file.js"></script>
+	<script src="js/main.polyfills.js"></script>
+</body>
 </html>
