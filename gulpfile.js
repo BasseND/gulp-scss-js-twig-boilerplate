@@ -6,7 +6,8 @@
 var settings = {
 	clean: true,
 	scripts: true,
-	polyfills: true,
+  componentScripts: true,
+	polyfills: false,
 	styles: true,
   templates: true,
 	svgs: true,
@@ -25,6 +26,7 @@ var paths = {
 	scripts: {
 		input: 'src/js/*',
 		polyfills: '.polyfill.js',
+    components: 'src/components/**/*.js',
 		output: 'dist/js/'
 	},
 	styles: {
@@ -203,6 +205,20 @@ var buildScripts = function (done) {
 
 };
 
+// Concat JS in components
+var concatComponentScripts = function (done) {
+  
+  if (!settings.componentScripts) return done();
+  
+  // Run tasks on JS files in components folders
+  return src(paths.scripts.components)
+    .pipe(sourcemaps.init())
+    .pipe(concat('components.js'))
+    .pipe(sourcemaps.write('.'))
+    .pipe(dest(paths.scripts.output));
+};
+
+
 // Lint scripts
 var lintScripts = function (done) {
 
@@ -210,7 +226,7 @@ var lintScripts = function (done) {
 	if (!settings.scripts) return done();
 
 	// Lint scripts
-	return src(paths.scripts.input)
+	return src([paths.scripts.input, paths.scripts.components])
 		.pipe(jshint())
 		.pipe(jshint.reporter('jshint-stylish'));
 
@@ -337,6 +353,7 @@ exports.default = series(
 	cleanDist,
 	parallel(
 		buildScripts,
+    concatComponentScripts,
 		lintScripts,
 		buildStyles,
     buildTemplates,
