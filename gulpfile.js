@@ -32,7 +32,7 @@ var paths = {
 		output: 'dist/css/'
 	},
   templates: {
-    twig: 'src/templates/**/*.twig',
+    //twig: 'src/templates/**/*.twig',
     pages: 'src/templates/pages/**/*.twig',
     data: 'src/data/**/*.json',
   },
@@ -248,28 +248,6 @@ var buildStyles = function (done) {
 
 };
 
-
-
-// // Generate templates
-// gulp.task('templates', function () {
-//   return gulp.src(src.html_pages)
-//     .pipe(data(function (file) {
-//       var dataPath = '../data/' + path.join(path.relative("../templates/pages", path.dirname(file.path)), path.basename(file.path, '.twig')) + '.json';
-//       return requireUncached(dataPath);
-//     }))
-//     .pipe(twig())
-//     .pipe(prettify({indent_char: ' ', indent_size: 2}))
-//     .pipe(gulp.dest('../'))
-//     .on("end", reload);
-// });
-
-// paths.
-// templates: {
-//   twig: '../templates/**/*.twig',
-//   html_pages: '../templates/pages/**/*.twig',
-//   dataJson: '../data/**/*.json',
-// },
-
 // Generate html from templates and data
 var buildTemplates = function(done) {
   
@@ -288,9 +266,6 @@ var buildTemplates = function(done) {
     //.pipe(prettify({indent_char: ' ', indent_size: 2}))
   	.pipe(dest(paths.output));
 };
-
-
-
 
 // Optimize SVG files
 var buildSVGs = function (done) {
@@ -355,7 +330,6 @@ var watchSource = function (done) {
  */
 
 // Default task
-// gulp
 exports.default = series(
 	cleanDist,
 	parallel(
@@ -369,7 +343,6 @@ exports.default = series(
 );
 
 // Watch and reload
-// gulp watch
 exports.watch = series(
 	exports.default,
 	startServer,

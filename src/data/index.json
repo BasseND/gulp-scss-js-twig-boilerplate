@@ -1,20 +1,20 @@
 {
-	"index": [
-			 {
-				 "url": "login.html",
-				 "name": "Log ind"
-			 },
-			 {
-				 "url": "login-returning.html",
-				 "name": "Tilbagevendende (flere brugere)"
-			 },
-			 {
-				 "url": "login-returning-single.html",
-				 "name": "Tilbagevendende (1 bruger)"
-			 },
-			 {
-				 "url": "claims-report.html?usertest=1",
-				 "name": "Skadesanmeldelse (1)"
-			 }
-			]
-}
+  "index": [
+  	 {
+  		 "url": "login.html",
+  		 "name": "Log ind"
+  	 },
+  	 {
+  		 "url": "login-returning.html",
+  		 "name": "Tilbagevendende (flere brugere)"
+  	 },
+  	 {
+  		 "url": "login-returning-single.html",
+  		 "name": "Tilbagevendende (1 bruger)"
+  	 },
+  	 {
+  		 "url": "claims-report.html?usertest=1",
+  		 "name": "Skadesanmeldelse (1)"
+  	 }
+  	]
+  }
