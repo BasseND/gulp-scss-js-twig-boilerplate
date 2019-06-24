@@ -76,25 +76,27 @@ var banner = {
 
 // General
 var {gulp, src, dest, watch, series, parallel} = require('gulp');
-var del = require('del');
-var flatmap = require('gulp-flatmap');
-var lazypipe = require('lazypipe');
-var rename = require('gulp-rename');
-var header = require('gulp-header');
-var package = require('./package.json');
+
+var del = require('del'), 
+    flatmap = require('gulp-flatmap'), 
+    lazypipe = require('lazypipe'), 
+    rename = require('gulp-rename'), 
+    header = require('gulp-header'), 
+    package = require('./package.json');
 
 // Scripts
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
-var concat = require('gulp-concat');
-var uglify = require('gulp-terser');
-var optimizejs = require('gulp-optimize-js');
+var jshint = require('gulp-jshint'), 
+    stylish = require('jshint-stylish'), 
+    concat = require('gulp-concat'), 
+    uglify = require('gulp-terser'), 
+    optimizejs = require('gulp-optimize-js');
 
 // Styles
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var prefix = require('gulp-autoprefixer');
-var minify = require('gulp-cssnano');
+var sass = require('gulp-sass'),
+    sassGlob = require('gulp-sass-glob'), 
+    sourcemaps = require('gulp-sourcemaps'), 
+    prefix = require('gulp-autoprefixer'), 
+    minify = require('gulp-cssnano');
 
 // Templates
 var twig = require('gulp-twig'),
@@ -148,8 +150,8 @@ var cleanDist = function (done) {
 var jsTasks = lazypipe()
 	.pipe(header, banner.full, {package: package})
 	.pipe(optimizejs)
-	.pipe(dest, paths.scripts.output)
-	.pipe(rename, {suffix: '.min'})
+	//.pipe(dest, paths.scripts.output)
+	//.pipe(rename, {suffix: '.min'})
 	.pipe(uglify)
 	.pipe(optimizejs)
 	.pipe(header, banner.min, {package: package})
@@ -223,6 +225,7 @@ var buildStyles = function (done) {
 	// Run tasks on all Sass files
 	return src(paths.styles.input)
     .pipe(sourcemaps.init())
+    .pipe(sassGlob())
 		.pipe(sass({
       includePaths: require('node-normalize-scss').includePaths,
 			outputStyle: 'expanded',
@@ -234,15 +237,16 @@ var buildStyles = function (done) {
 			remove: true
 		}))
 		.pipe(header(banner.full, { package : package }))
-    .pipe(sourcemaps.write())
-		.pipe(dest(paths.styles.output))
-		.pipe(rename({suffix: '.min'}))
+    //.pipe(sourcemaps.write('./maps'))
+		//.pipe(dest(paths.styles.output))
+		//.pipe(rename({suffix: '.min'}))
 		.pipe(minify({
 			discardComments: {
 				removeAll: true
 			}
 		}))
 		.pipe(header(banner.min, { package : package }))
+    .pipe(sourcemaps.write('.'))
 		.pipe(dest(paths.styles.output));
 
 };

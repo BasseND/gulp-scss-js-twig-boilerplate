@@ -2,7 +2,7 @@
 	"name": "project-name",
 	"version": "0.0.2",
 	"description": "A description for your project.",
-	"main": "./dist/your-main-js-file.js",
+	"main": "./dist/index.html",
 	"author": {
 		"name": "Ryan Grønborg",
 		"url": "http://www.dotslash.dk"
@@ -32,6 +32,7 @@
 		"gulp-optimize-js": "1.1.0",
 		"gulp-rename": "1.4.0",
 		"gulp-sass": "4.0.2",
+		"gulp-sass-glob": "^1.0.9",
 		"gulp-sourcemaps": "^2.6.5",
 		"gulp-svgmin": "2.2.0",
 		"gulp-terser": "1.2.0",

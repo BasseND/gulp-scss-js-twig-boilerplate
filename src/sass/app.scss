@@ -1,12 +1,15 @@
-// NORMALIZE
+// Normalize
 @import "normalize"; // File and path handled by Gulp
 
-// BASE
+// Base
 @import 'base/variables';
 @import 'base/base';
 @import 'base/layout';
 @import 'base/fonts';
 @import 'base/typography';
 
-// HELPERS
+// Helpers
 @import 'helpers/mixins';
+
+// Components
+@import "../components/**/*.scss";
