@@ -1,0 +1,25 @@
+{% if answerSummary %}
+  {% include 'answer-summary.twig' %}
+{% endif %}
+
+<div class="claims-report__answer">
+  
+  <form id="{{ id }}-form" class="claims-report__answer__form" method="post" action="">
+    
+    {% for answer in answers %}
+    <div class="claims-report__answer__option">
+      <div class="answer__option answer__option--radio">
+        <input type="radio" id="radio-{{id}}-{{ loop.index0 }}" name="radio-{{id}}" value="{{ answer.option|striptags|raw }}" required/>
+        <label for="radio-{{id}}-{{ loop.index0 }}"><span></span>{{ answer.option }}</label>
+      </div>
+    {% if answer.optionInfo %}
+      <div class="answer__option--radio__info">{{ answer.optionInfo }}</div>
+    {% endif %}
+    </div>
+    {% endfor %}
+    
+    {% include 'submit-question.twig' %}
+  
+  </form>
+  
+</div>

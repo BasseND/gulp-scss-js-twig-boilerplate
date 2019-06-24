@@ -1,0 +1,17 @@
+<div id="{{ id }}" class="claims-report__question-wrap{% if answerType == 'map' %} claims-report__question-wrap--map claims-report__question-wrap--fullheight{% endif %}{% if answerType == 'submit-final' %} claims-report__question-wrap--submit-final{% endif %}{% if answerType == 'warning' %} has-warning{% endif %}" data-nummer="{{ id }}">
+
+{% include 'step__header.twig' %}
+
+{% if answerType == 'map' %}
+  <div class="claims-report__question-map">
+    <div class="map" data-map="{{ id }}" id="map-{{ id }}"></div>
+  </div>
+{% endif %}
+  <div class="claims-report__question-inner">
+    {% include 'question.twig' %}
+    <div class="claims-report__answer-wrap">
+      {% set answerTemplate = 'answer__' ~ answerType ~ '.twig' %}
+      {% include answerTemplate %}
+    </div>
+  </div>
+</div>

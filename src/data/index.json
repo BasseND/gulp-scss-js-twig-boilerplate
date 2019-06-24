@@ -1,0 +1,196 @@
+{
+   "indexLinks": [
+		{
+			"links": [
+          {
+             "url": "login.html",
+             "name": "Log ind"
+          },
+          {
+             "url": "login-returning.html",
+             "name": "Tilbagevendende (flere brugere)"
+          },
+          {
+             "url": "login-returning-single.html",
+             "name": "Tilbagevendende (1 bruger)"
+          },
+          {
+             "url": "signup.html",
+             "name": "Opret bruger"
+          },
+          {
+             "url": "login-business.html",
+             "name": "Log ind Erhverv"
+          },
+				  {
+  					"url": "overview.html",
+  					"name": "Overblik"
+  				},
+          {
+             "url": "overview-household.html",
+             "name": "Overblik med samtykke"
+          },
+          {
+             "url": "product.html",
+             "name": "Produkt - Bilforsikring"
+          },
+          {
+             "url": "product-household.html",
+             "name": "Produkt - Bilforsikring (med samtykke)"
+          },
+          {
+             "url": "product-house.html",
+             "name": "Produkt - Husforsikring"
+          },
+          {
+             "url": "product-home.html",
+             "name": "Produkt - Indboforsikring"
+          },
+          {
+             "url": "product-business-movables.html",
+             "name": "Produkt - Erhvervsløsøre"
+          },
+          {
+             "url": "product-business-buildings.html",
+             "name": "Produkt - Ervhervsbygninger"
+          },
+          {
+             "url": "product-business-liability.html",
+             "name": "Produkt - Erhverv produktansvar"
+          },
+          {
+             "url": "add-product.html",
+             "name": "Tilføj produkt"
+          },
+          {
+             "url": "payment.html",
+             "name": "Betaling"
+          },
+          {
+             "url": "payment-archive.html",
+             "name": "Betalingsarkiv"
+          },
+          {
+             "url": "profile.html",
+             "name": "Profil"
+          },
+          {
+             "url": "damages.html",
+             "name": "Skader"
+          },
+          {
+             "url": "open-damage.html",
+             "name": "Åben skade"
+          },
+          {
+             "url": "closed-damage.html",
+             "name": "Afsluttet skade"
+          },
+          {
+             "url": "benefits.html",
+             "name": "Dine fordele"
+          },
+          {
+             "url": "contact.html",
+             "name": "Kontakt"
+          },
+          {
+             "url": "error.html",
+             "name": "Fejl"
+          },
+          {
+             "url": "profit-sharing.html",
+             "name": "Overskudsdeling"
+          },
+          {
+             "url": "club-contact.html",
+             "name": "Klub kontakt"
+          },
+          {
+             "url": "claims-report.html?usertest=1",
+             "name": "Skadesanmeldelse (1)"
+          }
+			]
+		}
+   ],
+   "indexLinksOK": [
+      {
+         "links": [
+            {
+               "url": "ok/signup.html",
+               "name": "Opret bruger"
+            },
+            {
+               "url": "ok/login.html",
+               "name": "Log ind"
+            },
+            {
+               "url": "ok/login-returning.html",
+               "name": "Tilbagevendende (flere brugere)"
+            },
+            {
+               "url": "ok/overview.html",
+               "name": "Overblik"
+            },
+            {
+               "url": "ok/product.html",
+               "name": "Produkt"
+            },
+            {
+               "url": "ok/damages.html",
+               "name": "Skader"
+            },
+            {
+               "url": "ok/open-damage.html",
+               "name": "Åben skade"
+            },
+            {
+               "url": "ok/closed-damage.html",
+               "name": "Afsluttet skade"
+            },
+            {
+               "url": "ok/payment.html",
+               "name": "Betaling"
+            },
+            {
+               "url": "ok/profile.html",
+               "name": "Profil"
+            }
+         ]
+      }
+   ],
+   "indexLinksDM": [
+      {
+         "links": [
+            {
+               "url": "dm/signup.html",
+               "name": "Opret bruger"
+            },
+            {
+               "url": "dm/login.html",
+               "name": "Log ind"
+            },
+            {
+               "url": "dm/login-returning.html",
+               "name": "Tilbagevendende (flere brugere)"
+            },
+            {
+               "url": "dm/overview.html",
+               "name": "Overblik"
+            },
+            {
+               "url": "dm/product.html",
+               "name": "Produkt"
+            },
+            {
+               "url": "dm/payment.html",
+               "name": "Betaling"
+            },
+            {
+               "url": "dm/profile.html",
+               "name": "Profil"
+            }
+         ]
+      }
+   ]
+}

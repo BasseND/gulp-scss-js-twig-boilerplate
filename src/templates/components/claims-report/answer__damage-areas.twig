@@ -1,0 +1,29 @@
+{% include 'answer-summary.twig' %}
+
+<div class="claims-report__answer">
+  
+  <form id="{{ id }}-form" class="claims-report__answer__form" method="post" action="">
+    
+    <div class="answer__option--damage-areas answer__option--damage-areas--checkboxes">
+      {% for answer in answers %}
+      <div class="claims-report__answer__option">
+        <div class="answer__option answer__option--checkbox">
+          <input type="checkbox" id="checkbox-{{id}}-{{ loop.index0 }}" value="{{ answer.option|striptags|raw }}" />
+          <label for="checkbox-{{id}}-{{ loop.index0 }}">{{ answer.option }}</label>
+        </div>
+        {% if answer.optionInfo %}
+          <div class="answer__option--radio__info">{{ answer.optionInfo }}</div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="answer__option--damage-areas answer__option--damage-areas--visual">
+      {% include '../../../images/gfx/damage-areas.svg' with {'id': id} %}
+    </div>
+  
+    {% include 'submit-question.twig' %}
+  
+  </form>
+  
+</div>

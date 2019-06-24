@@ -1,0 +1,26 @@
+{% include 'answer-summary.twig' %}
+
+<div class="claims-report__answer">
+  
+  <form id="{{ id }}-form" class="claims-report__answer__form" method="post" action="">
+    
+    {% for answer in answers %}
+    
+    <div class="claims-report__answer__option">			
+    	<!-- Freeform message -->
+    	<div class="answer__option answer__option--input">
+    		<label for="freeform_message" >{{ answer.label }} {% if answer.validation == 'required' %}<span class="required">*</span>{% endif %}</label>
+        
+    		<textarea id="freeform_message" name="message" required></textarea>
+    		<span class="error">Dette felt skal udfyldes</span>
+        					
+    	</div>
+    </div>
+    
+    {% endfor %}
+    
+    {% include 'submit-question.twig' %}
+    
+  </form>
+  
+</div>
