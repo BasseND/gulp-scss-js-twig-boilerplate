@@ -10,7 +10,7 @@ var settings = {
 	styles: true,
   templates: true,
 	svgs: true,
-	copy: true,
+	assets: true,
 	reload: true
 };
 
@@ -33,16 +33,16 @@ var paths = {
 	},
   templates: {
     twig: 'src/templates/**/*.twig',
-    html_pages: 'src/templates/pages/**/*.twig',
-    dataJson: 'src/data/**/*.json',
+    pages: 'src/templates/pages/**/*.twig',
+    data: 'src/data/**/*.json',
   },
-	svgs: {
-		input: 'src/svg/*.svg',
-		output: 'dist/svg/'
+	assets: {
+		input: 'src/assets/**!(svg)/*', // Excl. the assets/svg folder
+		output: 'dist/assets/'
 	},
-	copy: {
-		input: 'src/copy/**/*',
-		output: 'dist/'
+	svgs: {
+		input: 'src/assets/svg/*.svg',
+		output: 'dist/assets/svg/'
 	},
 	reload: './dist/'
 };
@@ -102,11 +102,27 @@ var twig = require('gulp-twig'),
     path = require('path'),
     data = require('gulp-data');
 
+var fs = require('fs');
+
 // SVGs
 var svgmin = require('gulp-svgmin');
 
 // BrowserSync
 var browserSync = require('browser-sync');
+
+
+// Custom functions
+function requireUncached( dataFile ) {
+
+  try {
+    delete require.cache[require.resolve( dataFile )];
+    return require( dataFile );
+  }  
+  catch(error) {
+    console.error(error.message);
+  }
+  
+}
 
 
 /**
@@ -257,14 +273,18 @@ var buildStyles = function (done) {
 // Generate html from templates and data
 var buildTemplates = function(done) {
   
-  //if (!settings.templates) return done();
+  if (!settings.templates) return done();
   
-  return src(paths.templates.html_pages)
-    // .pipe(data(function (file) {
-    //   var dataPath = 'src/data/' + path.join(path.relative("src/templates/pages", path.dirname(file.path)), path.basename(file.path, '.twig')) + '.json';
-    //   return requireUncached(dataPath);
-    // }))
-    .pipe(twig())
+  return src(paths.templates.pages)
+    .pipe(data(function(file) {
+      var dataPath = './src/data/' + path.basename(file.path, '.twig') + '.json';
+      return requireUncached(dataPath);
+      //return require('./src/data/' + path.basename(file.path, '.twig') + '.json');
+    }))
+    .pipe(twig({
+      errorLogToConsole: true
+      //debug: true
+    }))
     //.pipe(prettify({indent_char: ' ', indent_size: 2}))
   	.pipe(dest(paths.output));
 };
@@ -285,19 +305,19 @@ var buildSVGs = function (done) {
 
 };
 
-// Copy static files into output folder
-var copyFiles = function (done) {
+// Copy asset files into output folder
+var copyAssets = function (done) {
 
 	// Make sure this feature is activated before running
-	if (!settings.copy) return done();
+	if (!settings.assets) return done();
 
 	// Copy static files
-	return src(paths.copy.input)
-		.pipe(dest(paths.copy.output));
+	return src(paths.assets.input)
+		.pipe(dest(paths.assets.output));
 
 };
 
-// Watch for changes to the src directory
+// Watch for changes to the entire src directory
 var startServer = function (done) {
 
 	// Make sure this feature is activated before running
@@ -344,7 +364,7 @@ exports.default = series(
 		buildStyles,
     buildTemplates,
 		buildSVGs,
-		copyFiles
+		copyAssets
 	)
 );
 
