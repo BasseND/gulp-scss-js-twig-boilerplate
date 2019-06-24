@@ -32,7 +32,6 @@ var paths = {
 		output: 'dist/css/'
 	},
   templates: {
-    //twig: 'src/templates/**/*.twig',
     pages: 'src/templates/pages/**/*.twig',
     data: 'src/data/**/*.json',
   },
