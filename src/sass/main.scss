@@ -1,8 +1,9 @@
-// VENDOR
-//@import 'vendor/normalize'; // Imported by Gulp instead
+// NORMALIZE
+@import "normalize"; // File and path handled by Gulp
 
 // BASE
 @import 'base/variables';
+@import 'base/base';
 @import 'base/layout';
 @import 'base/fonts';
 @import 'base/typography';
