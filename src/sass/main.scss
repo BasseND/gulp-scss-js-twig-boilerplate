@@ -1,1 +1,11 @@
-@import "components/base"
+// VENDOR
+//@import 'vendor/normalize'; // Imported by Gulp instead
+
+// BASE
+@import 'base/variables';
+@import 'base/layout';
+@import 'base/fonts';
+@import 'base/typography';
+
+// HELPERS
+@import 'helpers/mixins';
