@@ -87,6 +87,7 @@ var optimizejs = require('gulp-optimize-js');
 
 // Styles
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var prefix = require('gulp-autoprefixer');
 var minify = require('gulp-cssnano');
 
@@ -195,16 +196,19 @@ var buildStyles = function (done) {
 
 	// Run tasks on all Sass files
 	return src(paths.styles.input)
+    .pipe(sourcemaps.init())
 		.pipe(sass({
       includePaths: require('node-normalize-scss').includePaths,
 			outputStyle: 'expanded',
-			sourceComments: true
+			sourceComments: true,
+      errLogToConsole: true
 		}))
 		.pipe(prefix({
 			cascade: true,
 			remove: true
 		}))
 		.pipe(header(banner.full, { package : package }))
+    .pipe(sourcemaps.write())
 		.pipe(dest(paths.styles.output))
 		.pipe(rename({suffix: '.min'}))
 		.pipe(minify({
